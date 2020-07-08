@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class FileServiceImplTest {
-    private static final String FILEPATH = "src/test/resources/test.csv";
+    private static final String FILEPATH = "src/test/resources/test.txt";
     private FileService fileService;
 
     @Before
@@ -26,16 +26,14 @@ public class FileServiceImplTest {
 
     @Test
     public void readFileOk() {
-        String line1 = "Id,ProductId,UserId,ProfileName";
-        String line2 = "HelpfulnessNumerator,HelpfulnessDenominator,Score,Time,Summary,Text";
-        List<String> expected = List.of(line1, line2);
+        List<String> expected = List.of("Some random text", "for testing");
         List<String> actual = fileService.readFile(FILEPATH);
         Assert.assertEquals(expected, actual);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void readFileWrongPath() {
-        String pathFile = "src/test/wrong-path/test.csv";
+        String pathFile = "src/test/wrong-path/test.txt";
         fileService.readFile(pathFile);
     }
 
