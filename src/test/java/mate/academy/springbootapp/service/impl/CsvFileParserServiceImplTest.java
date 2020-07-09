@@ -34,10 +34,7 @@ public class CsvFileParserServiceImplTest {
                 .atZone(ZoneId.systemDefault()).toLocalDateTime();
         reviewDto1.setTime(time1);
         reviewDto1.setSummary("Good Quality Dog Food");
-        reviewDto1.setText("I have bought several of the Vitality canned dog food "
-                + "products and have found them all to be of good quality. The product "
-                + "looks more like a stew than a processed meat and it smells better. "
-                + "My Labrador is finicky and she appreciates this product better than  most.");
+        reviewDto1.setText("Sample text in the first review.");
         var reviewDto2 = new ReviewDto();
         reviewDto2.setId(2L);
         reviewDto2.setProductId("B00813GRG4");
@@ -50,9 +47,7 @@ public class CsvFileParserServiceImplTest {
                 .atZone(ZoneId.systemDefault()).toLocalDateTime();
         reviewDto2.setTime(time2);
         reviewDto2.setSummary("Not as Advertised");
-        reviewDto2.setText("Product arrived labeled as Jumbo Salted Peanuts...the peanuts "
-                + "were actually small sized unsalted. Not sure if this was an error or if "
-                + "the vendor intended to represent the product as \"Jumbo\".");
+        reviewDto2.setText("Sample text in the second review.");
 
         List<ReviewDto> expected = List.of(reviewDto1, reviewDto2);
         List<ReviewDto> actual = csvFileParserService.parseCsvFile(FILEPATH);
