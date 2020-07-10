@@ -1,4 +1,4 @@
-package mate.academy.springbootapp.dto;
+package mate.academy.springbootapp.model.dto;
 
 import java.time.LocalDateTime;
 import lombok.Data;
