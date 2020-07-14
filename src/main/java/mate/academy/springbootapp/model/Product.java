@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "product")
 public class Product {
     @Id
     private String id;

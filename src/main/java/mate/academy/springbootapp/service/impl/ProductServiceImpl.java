@@ -16,4 +16,9 @@ public class ProductServiceImpl implements ProductService {
     public void addAll(List<Product> products) {
         repository.saveAll(products);
     }
+
+    @Override
+    public List<Product> getMostCommented(int limit) {
+        return repository.getMostCommented(limit);
+    }
 }

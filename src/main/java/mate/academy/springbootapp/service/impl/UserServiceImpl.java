@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService {
     public void addAll(List<User> users) {
         repository.saveAll(users);
     }
+
+    @Override
+    public List<User> getMostActive(int limit) {
+        return repository.getMostActive(limit);
+    }
 }
