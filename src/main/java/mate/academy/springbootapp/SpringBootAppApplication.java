@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringBootAppApplication {
-    private static final String FILEPATH = "src/main/resources/reviews.csv";
+    private static final String FILEPATH = "src/test/resources/reviews-test.csv";
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootAppApplication.class, args);
