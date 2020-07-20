@@ -13,38 +13,34 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReviewMapper {
     public ReviewDto getDtoFromCsvRecord(CSVRecord csvRecord) {
-        var reviewDto = new ReviewDto();
-        reviewDto.setId(Long.parseLong(csvRecord.get("Id")));
-        reviewDto.setProductId(csvRecord.get("ProductId"));
-        reviewDto.setUserId(csvRecord.get("UserId"));
-        reviewDto.setProfileName(csvRecord.get("ProfileName"));
-        reviewDto.setHelpfulnessNumerator(Integer
-                .parseInt(csvRecord.get("HelpfulnessNumerator")));
-        reviewDto.setHelpfulnessDenominator(Integer
-                .parseInt(csvRecord.get("HelpfulnessDenominator")));
-        reviewDto.setScore(Integer.parseInt(csvRecord.get("Score")));
-        reviewDto.setTime(convertToLocalDateTime(csvRecord.get("Time")));
-        reviewDto.setSummary(csvRecord.get("Summary"));
-        reviewDto.setText(csvRecord.get("Text"));
-        return reviewDto;
+        return new ReviewDto()
+                .setId(Long.parseLong(csvRecord.get("Id")))
+                .setProductId(csvRecord.get("ProductId"))
+                .setUserId(csvRecord.get("UserId"))
+                .setProfileName(csvRecord.get("ProfileName"))
+                .setHelpfulnessNumerator(Integer
+                        .parseInt(csvRecord.get("HelpfulnessNumerator")))
+                .setHelpfulnessDenominator(Integer
+                        .parseInt(csvRecord.get("HelpfulnessDenominator")))
+                .setScore(Integer.parseInt(csvRecord.get("Score")))
+                .setTime(convertToLocalDateTime(csvRecord.get("Time")))
+                .setSummary(csvRecord.get("Summary"))
+                .setText(csvRecord.get("Text"));
     }
 
     public Review getReviewFromReviewDto(ReviewDto reviewDto) {
-        var review = new Review();
-        review.setText(reviewDto.getText());
-        review.setSummary(reviewDto.getSummary());
-        review.setTime(reviewDto.getTime());
-        review.setScore(reviewDto.getScore());
-        review.setHelpfulnessNumerator(reviewDto.getHelpfulnessNumerator());
-        review.setHelpfulnessDenominator(reviewDto.getHelpfulnessDenominator());
-        var product = new Product();
-        product.setId(reviewDto.getProductId());
-        review.setProduct(product);
-        var user = new User();
-        user.setId(reviewDto.getUserId());
-        user.setProfileName(reviewDto.getProfileName());
-        review.setUser(user);
-        return review;
+        return new Review()
+                .setText(reviewDto.getText())
+                .setSummary(reviewDto.getSummary())
+                .setTime(reviewDto.getTime())
+                .setScore(reviewDto.getScore())
+                .setHelpfulnessNumerator(reviewDto.getHelpfulnessNumerator())
+                .setHelpfulnessDenominator(reviewDto.getHelpfulnessDenominator())
+                .setProduct(new Product()
+                        .setId(reviewDto.getProductId()))
+                .setUser(new User()
+                        .setId(reviewDto.getUserId())
+                        .setProfileName(reviewDto.getProfileName()));
     }
 
     private LocalDateTime convertToLocalDateTime(String time) {

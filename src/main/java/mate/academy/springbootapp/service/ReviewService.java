@@ -5,4 +5,6 @@ import mate.academy.springbootapp.model.Review;
 
 public interface ReviewService {
     void addAll(List<Review> reviews);
+
+    List<String> getMostUsedWords(int limit);
 }

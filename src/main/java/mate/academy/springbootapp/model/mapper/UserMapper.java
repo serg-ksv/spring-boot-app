@@ -8,16 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
     public User getUserFromReviewDto(ReviewDto reviewDto) {
-        User user = new User();
-        user.setId(reviewDto.getUserId());
-        user.setProfileName(reviewDto.getProfileName());
-        return user;
+        return new User()
+                .setId(reviewDto.getUserId())
+                .setProfileName(reviewDto.getProfileName());
     }
 
     public UserResponseDto getDtoFromUser(User user) {
-        var responseDto = new UserResponseDto();
-        responseDto.setProfileName(user.getProfileName());
-        responseDto.setNumberOfReviews(user.getReviews().size());
-        return responseDto;
+        return new UserResponseDto()
+                .setProfileName(user.getProfileName())
+                .setNumberOfReviews(user.getReviews().size());
     }
 }

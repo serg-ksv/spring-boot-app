@@ -8,15 +8,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductMapper {
     public Product getProductFromReviewDto(ReviewDto reviewDto) {
-        Product product = new Product();
-        product.setId(reviewDto.getProductId());
-        return product;
+        return new Product().setId(reviewDto.getProductId());
     }
 
     public ProductResponseDto getDtoFromProduct(Product product) {
-        var responseDto = new ProductResponseDto();
-        responseDto.setProductId(product.getId());
-        responseDto.setNumberOfReviews(product.getReviews().size());
-        return responseDto;
+        return new ProductResponseDto()
+                .setProductId(product.getId())
+                .setNumberOfReviews(product.getReviews().size());
     }
 }

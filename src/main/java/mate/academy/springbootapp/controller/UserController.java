@@ -1,5 +1,6 @@
 package mate.academy.springbootapp.controller;
 
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping("/most-active")
+    @ApiOperation(value = "Finds the most active users")
     public List<UserResponseDto> getMostActive(@RequestParam(defaultValue = "1000") int limit) {
         return userService.getMostActive(limit).stream()
                 .map(userMapper::getDtoFromUser)

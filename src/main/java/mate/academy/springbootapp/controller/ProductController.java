@@ -1,5 +1,6 @@
 package mate.academy.springbootapp.controller;
 
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,9 @@ public class ProductController {
     private final ProductMapper productMapper;
 
     @GetMapping("/most-commented")
+    @ApiOperation(value = "Finds the most commented products")
     public List<ProductResponseDto> getMostCommented(@RequestParam(defaultValue = "1000")
-                                                                 int limit) {
+                                                             int limit) {
         return productService.getMostCommented(limit).stream()
                 .map(productMapper::getDtoFromProduct)
                 .collect(Collectors.toList());
