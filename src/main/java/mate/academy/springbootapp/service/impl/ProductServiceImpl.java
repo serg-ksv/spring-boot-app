@@ -18,6 +18,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product findById(String id) {
+        return repository.findById(id).orElseThrow();
+    }
+
+    @Override
     public List<Product> getMostCommented(int limit) {
         return repository.getMostCommented(limit);
     }
