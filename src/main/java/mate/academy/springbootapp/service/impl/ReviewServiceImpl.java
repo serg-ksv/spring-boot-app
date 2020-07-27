@@ -28,6 +28,11 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public Review findByIdAndCustomerLogin(Long id, String login) {
+        return repository.findReviewByIdAndCustomer_Login(id, login);
+    }
+
+    @Override
     public Review update(Review review) {
         return repository.save(review);
     }

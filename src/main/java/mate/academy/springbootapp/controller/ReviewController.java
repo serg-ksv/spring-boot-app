@@ -51,11 +51,7 @@ public class ReviewController {
     @PutMapping
     public ReviewResponseDto update(@RequestBody ReviewUpdateDto dto,
                                     Authentication authentication) {
-        var customer = customerService.findByLogin(authentication.getName());
-        var review = customer.getReviews().stream()
-                .filter(r -> r.getId().equals(dto.getId()))
-                .findFirst()
-                .orElseThrow();
+        var review = reviewService.findByIdAndCustomerLogin(dto.getId(), authentication.getName());
         review.setScore(dto.getScore())
                 .setSummary(dto.getSummary())
                 .setText(dto.getText())

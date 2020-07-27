@@ -8,6 +8,8 @@ public interface ReviewService {
 
     void addAll(List<Review> reviews);
 
+    Review findByIdAndCustomerLogin(Long id, String login);
+
     Review update(Review review);
 
     void delete(Long id);
