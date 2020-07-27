@@ -33,6 +33,9 @@ public class InjectDataController {
     private final RoleService roleService;
     private final CustomerService customerService;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
+    private final ProductMapper productMapper;
+    private final ReviewMapper reviewMapper;
 
     @PostConstruct
     public void init() {
@@ -44,9 +47,6 @@ public class InjectDataController {
     private void injectData() {
         var parser = new CsvFileParserServiceImpl(new ReviewMapper());
         List<ReviewDto> dtoList = parser.parseCsvFile(FILEPATH);
-        var userMapper = new UserMapper();
-        var productMapper = new ProductMapper();
-        var reviewMapper = new ReviewMapper();
         List<User> users = new ArrayList<>();
         List<Product> products = new ArrayList<>();
         List<Review> reviews = new ArrayList<>();
