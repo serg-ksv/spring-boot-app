@@ -18,8 +18,28 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository repository;
 
     @Override
+    public Review add(Review review) {
+        return repository.save(review);
+    }
+
+    @Override
     public void addAll(List<Review> reviews) {
         repository.saveAll(reviews);
+    }
+
+    @Override
+    public Review findByIdAndCustomerLogin(Long id, String login) {
+        return repository.findReviewByIdAndCustomer_Login(id, login);
+    }
+
+    @Override
+    public Review update(Review review) {
+        return repository.save(review);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 
     @Override

@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("SELECT text FROM review")
     List<String> getAllText();
+
+    Review findReviewByIdAndCustomer_Login(Long id, String login);
 }

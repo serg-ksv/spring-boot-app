@@ -6,7 +6,9 @@ import java.time.ZoneId;
 import mate.academy.springbootapp.model.Product;
 import mate.academy.springbootapp.model.Review;
 import mate.academy.springbootapp.model.User;
+import mate.academy.springbootapp.model.dto.ReviewCreateDto;
 import mate.academy.springbootapp.model.dto.ReviewDto;
+import mate.academy.springbootapp.model.dto.ReviewResponseDto;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
 
@@ -41,6 +43,22 @@ public class ReviewMapper {
                 .setUser(new User()
                         .setId(reviewDto.getUserId())
                         .setProfileName(reviewDto.getProfileName()));
+    }
+
+    public ReviewResponseDto getReviewResponseDtoFromReview(Review review) {
+        return new ReviewResponseDto()
+                .setId(review.getId())
+                .setScore(review.getScore())
+                .setSummary(review.getSummary())
+                .setText(review.getText());
+    }
+
+    public Review getReviewFromReviewCreateDto(ReviewCreateDto dto) {
+        return new Review()
+                .setTime(LocalDateTime.now())
+                .setScore(dto.getScore())
+                .setSummary(dto.getSummary())
+                .setText(dto.getText());
     }
 
     private LocalDateTime convertToLocalDateTime(String time) {
