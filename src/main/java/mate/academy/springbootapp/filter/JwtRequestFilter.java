@@ -1,4 +1,4 @@
-package mate.academy.springbootapp.filters;
+package mate.academy.springbootapp.filter;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;

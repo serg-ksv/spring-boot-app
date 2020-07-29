@@ -1,7 +1,7 @@
 package mate.academy.springbootapp.config;
 
 import lombok.AllArgsConstructor;
-import mate.academy.springbootapp.filters.JwtRequestFilter;
+import mate.academy.springbootapp.filter.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
