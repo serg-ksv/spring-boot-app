@@ -3,8 +3,11 @@ jdk:
   - openjdk11
 before_install:
   - chmod +x mvnw
+  - psql -c "CREATE ROLE ksv WITH password '123'"
 script:
   - mvn clean install
 cache:
   directories:
     - $HOME/.m2
+services:
+  - postgresql
