@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@Entity(name = "\"user\"")
+@Entity(name = "users")
 public class User {
     @Id
     private String id;
